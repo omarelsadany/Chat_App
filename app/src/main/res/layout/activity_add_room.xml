@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+         <variable
+             name="vm"
+             type="com.example.chat_app.ui.addRoom.AddRoomViewModel" />
+    </data>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".ui.register.RegisterActivity"
+        android:background="@drawable/background">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:background="@color/transparent"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/transparent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Room"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:gravity="center" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.addRoom.AddRoomActivity"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+<androidx.cardview.widget.CardView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintWidth_percent=".8"
+    android:layout_marginTop="48dp">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+
+           android:gravity="center_horizontal">
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="80.38dp"
+            android:src="@drawable/people"
+            android:adjustViewBounds="true"/>
+           <com.google.android.material.textfield.TextInputLayout
+               android:id="@+id/title_layout"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               app:boxBackgroundColor="@color/transparent"
+               app:error="@{vm.nameRoomError}">
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="Enter  Room Name"
+                   android:text="@={vm.nameRoom}"/>
+           </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Spinner
+               android:id="@+id/spinner_category"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                />
+           <com.google.android.material.textfield.TextInputLayout
+               android:id="@+id/description_layout"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               app:boxBackgroundColor="@color/transparent"
+               app:error="@{vm.descriptionRoomError}">
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:hint="Enter Room Descreption"
+                   android:lines="2"
+                   android:maxLines="2"
+                   android:text="@={vm.descriptionRoom}"/>
+           </com.google.android.material.textfield.TextInputLayout>
+           <Button
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Create Room"
+               android:onClick="@{()->vm.createRoom()}"/>
+       </LinearLayout>
+</androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

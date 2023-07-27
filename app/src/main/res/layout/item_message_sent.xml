@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+ <data>
+      <variable
+          name="itemmessage"
+          type="com.example.chat_app.model.Message" />
+ </data>
+
+ <androidx.constraintlayout.widget.ConstraintLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:padding="4dp">
+
+  <LinearLayout
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:gravity="end"
+
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent">
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="@{itemmessage.senderName}"
+       android:layout_marginVertical="4dp"
+       tools:text="Omar"/>
+
+   <TextView
+       android:id="@+id/message"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       tools:text="this is sent message from"
+       app:layout_constraintEnd_toEndOf="parent"
+       android:text="@{itemmessage.messageContent}"
+       android:textColor="@color/white"
+       android:padding="12dp"
+       app:layout_constraintStart_toEndOf="@id/time"
+       android:background="@drawable/rounded_primary_sent_message" />
+   <TextView
+       android:id="@+id/time"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginEnd="5dp"
+       android:gravity="end"
+       android:text="@{itemmessage.formatDateTime()}"
+       android:layout_gravity="end|bottom"
+       app:layout_constraintBottom_toBottomOf="@id/message"
+       app:layout_constraintStart_toStartOf="parent"
+       tools:text="3:00pm" />
+  </LinearLayout>
+ </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
